@@ -3,202 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="2025년 비트코인 선물거래 수수료 최적화 및 거래소 가입 가이드. 바이비트, 비트겟 공식 파트너 코인팝이 제공하는 시크릿 리포트.">
+    <meta name="description" content="실전 매매 전 필수 점검 리스트. 수수료 세팅부터 김프 확인까지, 5분 만에 끝내는 트레이딩 환경 구축 가이드. by CoinPop">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="[CoinPop] 2025 선물거래 시크릿 노트">
-    <meta property="og:description" content="상위 1%만 아는 수수료 0원 세팅법과 거래소별 혜택 비교.">
-    <title>2025 Crypto Secret Note | CoinPop</title>
+    <meta property="og:title" content="[Checklist] 암호화폐 트레이딩 셋업 가이드">
+    <title>Crypto Trading Setup Checklist | CoinPop</title>
     
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
 
     <style>
         :root {
-            --bg-dark: #0f0c29;
-            --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --accent-primary: #00f260; /* 네온 그린 */
-            --accent-secondary: #0575E6; /* 네온 블루 */
-            --text-main: #ffffff;
-            --text-sub: #b3b3b3;
+            --bg-color: #F7F7F5; /* 노션 스타일 배경색 */
+            --card-bg: #FFFFFF;
+            --text-main: #37352F;
+            --text-gray: #787774;
+            --accent-green: #2ea043; /* 성공/체크 색상 */
+            --accent-blue: #2383e2;
+            --border-color: #E0E0E0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
         }
-
-        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            background: var(--bg-gradient);
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        /* 배경 효과 (은은한 빛) */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(5,117,230,0.15) 0%, transparent 60%);
-            z-index: -1;
-            animation: pulse 15s infinite;
+            padding: 40px 20px;
+            line-height: 1.7;
         }
 
         .container {
-            max-width: 720px;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 40px 20px;
         }
 
-        /* 헤더 스타일 */
+        /* 헤더 (심플하고 직관적) */
         header {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
+            margin-bottom: 50px;
         }
 
-        .badge {
-            display: inline-block;
-            background: rgba(0, 242, 96, 0.1);
-            color: var(--accent-primary);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            border: 1px solid rgba(0, 242, 96, 0.3);
+        .icon-header {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
         }
 
         h1 {
-            font-size: 2.8rem;
-            margin: 0 0 15px 0;
-            background: linear-gradient(to right, #fff, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem;
             font-weight: 800;
-            letter-spacing: -1px;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
         }
 
-        .update-time {
-            color: var(--text-sub);
-            font-size: 0.9rem;
+        .subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
         }
 
-        /* 공통 카드 스타일 (글래스모피즘) */
-        .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
+        /* 콜아웃 박스 (노션 스타일) */
+        .callout {
+            background-color: #F1F1EF;
+            padding: 16px 20px;
+            border-radius: 8px;
+            display: flex;
+            gap: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            font-size: 0.95rem;
+            align-items: flex-start;
+        }
+        .callout-icon { font-size: 1.2rem; }
+
+        /* 체크리스트 카드 섹션 */
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-gray);
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255,255,255,0.2);
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-sm);
         }
 
-        h2 {
-            font-size: 1.5rem;
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: var(--text-main);
+        /* 체크리스트 아이템 */
+        .checklist-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
         }
+        .checklist-item:last-child { border-bottom: none; }
 
-        h2::before {
-            content: '';
-            display: block;
-            width: 4px;
+        .check-box {
+            min-width: 24px;
             height: 24px;
-            background: var(--accent-primary);
-            border-radius: 2px;
-        }
-
-        p { color: var(--text-sub); margin-bottom: 1rem; }
-        strong { color: #fff; font-weight: 700; }
-
-        /* 인사이트 박스 */
-        .insight-box {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
-            border-left: 4px solid #F2994A;
-            padding: 20px;
-            border-radius: 0 12px 12px 0;
-            margin: 20px 0;
-        }
-        .insight-title { color: #F2994A; font-weight: bold; margin-bottom: 5px; display: block; }
-
-        /* 거래소 비교 그리드 */
-        .exchange-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .exchange-item {
-            background: rgba(0,0,0,0.2);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .exchange-name { font-size: 1.2rem; font-weight: bold; display: block; margin-bottom: 10px; color: #fff; }
-        .tag { display: block; font-size: 0.8rem; color: var(--accent-primary); margin-top: 5px; }
-
-        /* CTA 버튼 */
-        .cta-button {
-            display: block;
-            background: linear-gradient(90deg, var(--accent-secondary), #00c6ff);
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            text-align: center;
-            padding: 18px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 30px;
-            box-shadow: 0 4px 15px rgba(5, 117, 230, 0.4);
-            transition: all 0.3s;
+            transition: all 0.2s;
+        }
+        
+        /* 체크된 상태 시각화 */
+        .checklist-item.checked .check-box {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+        .checklist-item.checked .item-text {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+        .checklist-item:hover { background-color: #fafafa; margin: 0 -10px; padding: 15px 10px; border-radius: 8px; }
+
+        .item-content { flex: 1; }
+        .item-title { font-weight: 700; display: block; margin-bottom: 2px; }
+        .item-desc { font-size: 0.85rem; color: var(--text-gray); }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #E3F2FD;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-left: 10px;
         }
 
-        .cta-button:hover {
-            filter: brightness(1.1);
-            box-shadow: 0 6px 20px rgba(5, 117, 230, 0.6);
-            transform: scale(1.02);
+        .tag.alert { background: #FFEBEE; color: #D32F2F; }
+
+        /* 버튼 스타일 */
+        .btn-link {
+            display: inline-block;
+            background-color: #111;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
         }
+        .btn-link:hover { opacity: 0.8; }
 
         /* 푸터 */
         footer {
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-sub);
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            color: var(--text-gray);
+            font-size: 0.85rem;
         }
-        footer a { color: var(--text-sub); text-decoration: none; border-bottom: 1px solid #555; }
+        footer a { color: var(--text-gray); text-decoration: underline; }
 
-        /* 모바일 대응 */
+        /* 모바일 최적화 */
         @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .exchange-grid { grid-template-columns: 1fr; }
-            .container { padding: 20px 15px; }
+            h1 { font-size: 1.8rem; }
             .card { padding: 20px; }
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
-            100% { opacity: 0.5; transform: scale(1); }
         }
     </style>
 </head>
@@ -206,72 +176,76 @@
 
     <div class="container">
         <header>
-            <div class="badge">🔥 2025 CoinPop Secret Note</div>
-            <h1>CRYPTO<br>TRADING STRATEGY</h1>
-            <div class="update-time">
-                Last Updated: <span style="color:var(--accent-primary); font-family: monospace;">
-                <script>document.write(new Date().toISOString().slice(0, 10));</script>
-                </span>
-            </div>
+            <span class="icon-header">🛠️</span>
+            <h1>Trading Setup Checklist</h1>
+            <p class="subtitle">실전 매매 전, 반드시 확인해야 할 3가지 설정</p>
         </header>
 
-        <main>
-            <div class="card">
-                <h2>왜 90%는 청산당할까?</h2>
-                <p>대부분의 트레이더는 '예측'에 목숨을 겁니다. 하지만 고수들의 계좌가 우상향하는 진짜 비밀은 <strong>'비용(Cost) 통제'</strong>에 있습니다.</p>
-                <div class="insight-box">
-                    <span class="insight-title">💡 Insight</span>
-                    레버리지 10배 사용 시, 진입/청산 수수료만으로 시드의 1.2%가 증발합니다. <br>
-                    <strong>이 고정 비용을 0에 가깝게 만드는 것</strong>이 승률 51%를 만드는 첫걸음입니다.
+        <div class="callout">
+            <span class="callout-icon">💡</span>
+            <div>
+                <strong>준비되지 않은 매매는 도박입니다.</strong><br>
+                상위 트레이더들은 차트를 보기 전에 '환경'부터 세팅합니다. 아래 리스트를 통해 당신의 계정이 최적화되어 있는지 점검해보세요.
+            </div>
+        </div>
+
+        <div class="section-title">STEP 1 : ACCOUNT OPTIMIZATION</div>
+        
+        <div class="card">
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div class="item-content">
+                    <span class="item-title">수수료 할인 코드 적용 여부 <span class="tag alert">매우 중요</span></span>
+                    <span class="item-desc">가입 시 코드를 누락하면 거래할 때마다 20%~50% 손해를 봅니다. (추후 적용 불가)</span>
                 </div>
             </div>
 
-            <div class="card" style="border-color: rgba(0, 242, 96, 0.3);">
-                <h2>거래소별 최적화 세팅</h2>
-                <p>CoinPop 공식 파트너십을 통해 일반 가입으로는 절대 받을 수 없는 <strong>히든 베네핏</strong>을 적용받으세요.</p>
-                
-                <div class="exchange-grid">
-                    <div class="exchange-item">
-                        <span class="exchange-name">Bybit (바이비트)</span>
-                        <p style="font-size:0.9rem; margin-bottom:5px;">안정성 & 유동성 1위</p>
-                        <span class="tag">수수료 20% 즉시 할인</span>
-                        <span class="tag" style="color:#fff;">+ $30,000 증정금</span>
-                    </div>
-                    <div class="exchange-item">
-                        <span class="exchange-name">Bitget (비트겟)</span>
-                        <p style="font-size:0.9rem; margin-bottom:5px;">가성비 & 카피트레이딩</p>
-                        <span class="tag" style="color:#F2994A;">수수료 50% 평생 할인</span>
-                        <span class="tag" style="color:#fff;">+ 셀퍼럴/페이백 가능</span>
-                    </div>
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div class="item-content">
+                    <span class="item-title">KYC 인증 & 트래블룰 대비</span>
+                    <span class="item-desc">업비트와의 입출금을 위해 영문명 철자가 여권과 100% 일치해야 합니다.</span>
                 </div>
+            </div>
 
-                <a href="https://coinpopbit.neocities.org/" class="cta-button">
-                    ⚡ 시크릿 할인 코드 적용하기
+            <div class="checklist-item">
+                <div class="check-box"></div>
+                <div class="item-content">
+                    <span class="item-title">구글 OTP (2FA) 설정</span>
+                    <span class="item-desc">해킹 방지를 위한 필수 보안 설정입니다.</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #eee;">
+                <p style="font-size: 0.9rem; color: #555;">아직 1번 항목이 해결되지 않았나요?</p>
+                <a href="https://coinpopbit.neocities.org/" class="btn-link">
+                    공식 파트너 할인 코드 받기 →
                 </a>
             </div>
+        </div>
 
-            <div class="card">
-                <h2>트래블룰(Travel Rule) 솔루션</h2>
-                <p>업비트/빗썸에서 100만 원 이상 이체 시 '입금 반환' 때문에 당황하셨나요?</p>
-                <p>핵심은 <strong>KYC 영문명 일치</strong>입니다. 띄어쓰기 하나라도 다르면 거절됩니다. 복잡한 반환 신청 없이 한 번에 통과하는 노하우를 공개합니다.</p>
-            </div>
+        <div class="section-title">STEP 2 : MARKET DATA TOOLS</div>
 
-            <div class="card" style="text-align: center; background: transparent; border: none; box-shadow: none;">
-                <p style="font-size: 1.1rem; color: #fff;">
-                    "정보의 비대칭이 수익을 만듭니다."
-                </p>
-                <p style="font-size: 0.9rem;">
-                    이 페이지는 요약본입니다. 실시간 김프, 펀딩비, 알트코인 추천 정보는 본진에서 확인하세요.
-                </p>
+        <div class="card">
+            <div class="checklist-item checked"> <div class="check-box">✓</div>
+                <div class="item-content">
+                    <span class="item-title">실시간 김치 프리미엄(Kimchi Premium) 확인</span>
+                    <span class="item-desc">한국 시세가 비쌀 때 매수하면 손해입니다. 진입 전 반드시 체크하세요.</span>
+                </div>
             </div>
-        </main>
+             <div class="checklist-item"> 
+                <div class="check-box"></div>
+                <div class="item-content">
+                    <span class="item-title">펀딩비(Funding Rate) 추이 분석</span>
+                    <span class="item-desc">롱/숏 비율을 파악하여 세력의 의도를 읽어야 합니다.</span>
+                </div>
+            </div>
+        </div>
 
         <footer>
-            <h3>CoinPop Intelligence</h3>
-            <p>Crypto Market Analysis & Strategy</p>
-            <p><a href="https://coinpopbit.com">Visit Official Website →</a></p>
-            <br>
-            <p style="font-size: 0.7rem; opacity: 0.5;">Copyright © 2025 CoinPop. All rights reserved.</p>
+            <p><strong>Created by CoinPop Research Team</strong></p>
+            <p>이 페이지는 클라우드 서버에 호스팅된 요약 가이드입니다.<br>
+            더 자세한 정보는 <a href="https://coinpopbit.com">CoinPop 본진</a>에서 확인하세요.</p>
         </footer>
     </div>
 
