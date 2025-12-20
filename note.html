@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinPop - Note Blog Feed</title>
+    <meta name="description" content="CoinPop의 Note(note.com) 블로그 최신 연재글과 가상화폐 인사이트를 모아보는 페이지입니다.">
+    
+    <style>
+        /* Note.com 스타일 (심플 & 민트 그린) */
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
+        .container { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+        
+        header { text-align: center; margin-bottom: 50px; }
+        .logo-text { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; color: #222; }
+        .logo-text span { color: #41c9b4; } /* Note 시그니처 컬러 */
+        p.subtitle { color: #999; font-size: 14px; margin-top: 10px; }
+        
+        /* 카드 리스트 스타일 */
+        .note-card { 
+            border: 1px solid #e0e0e0; 
+            border-radius: 8px; 
+            padding: 24px; 
+            margin-bottom: 24px; 
+            transition: box-shadow 0.2s, transform 0.2s; 
+            background: #fff;
+        }
+        .note-card:hover { 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            transform: translateY(-2px);
+            border-color: #41c9b4;
+        }
+        
+        .note-date { font-size: 12px; color: #aaa; margin-bottom: 12px; display: block; }
+        .note-title { font-size: 20px; font-weight: bold; margin: 0 0 12px; line-height: 1.5; }
+        .note-title a { text-decoration: none; color: #222; }
+        
+        .note-desc { font-size: 15px; line-height: 1.7; color: #666; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* 버튼 스타일 */
+        .btn-note { 
+            display: inline-block; 
+            padding: 8px 20px; 
+            background-color: #fff; 
+            color: #41c9b4; 
+            border: 1px solid #41c9b4; 
+            text-decoration: none; 
+            border-radius: 20px; 
+            font-size: 13px; 
+            font-weight: bold; 
+            transition: all 0.2s; 
+        }
+        .btn-note:hover { background-color: #41c9b4; color: #fff; }
+
+        /* 로딩 및 푸터 */
+        #loading { text-align: center; padding: 60px; color: #ccc; font-weight: 500; }
+        footer { margin-top: 60px; text-align: center; font-size: 12px; color: #ccc; padding-bottom: 40px; }
+        footer a { color: #aaa; text-decoration: none; border-bottom: 1px solid #eee; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo-text">CoinPop <span>note</span> Feed</div>
+        <p class="subtitle">Creative Crypto Insights & Analysis</p>
+    </header>
+
+    <div id="note-feed">
+        <div id="loading">Note 콘텐츠를 불러오는 중...</div>
+    </div>
+
+    <footer>
+        <p>Curated by <a href="https://coinpopbit.com" target="_blank">CoinPop Official</a></p>
+    </footer>
+</div>
+
+<script>
+    // Note RSS 주소
+    const rssUrl = 'https://note.com/aojas/rss';
+    
+    // API 호출
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const feedContainer = document.getElementById('note-feed');
+            const items = data.items;
+            let html = '';
+
+            if (items && items.length > 0) {
+                items.forEach(item => {
+                    // 날짜 포맷 (심플하게)
+                    const date = new Date(item.pubDate).toLocaleDateString('ko-KR', {
+                        year: 'numeric', month: '2-digit', day: '2-digit'
+                    });
+
+                    // 본문 태그 제거 및 썸네일(이미지) 제거 - 텍스트 위주로 보여주기 위함
+                    let description = item.description.replace(/<[^>]*>?/gm, ''); 
+                    if (description.length > 140) description = description.substring(0, 140) + '...';
+
+                    html += `
+                        <div class="note-card">
+                            <span class="note-date">${date}</span>
+                            <h2 class="note-title"><a href="${item.link}" target="_blank">${item.title}</a></h2>
+                            <p class="note-desc">${description}</p>
+                            <a href="${item.link}" target="_blank" class="btn-note">Note에서 읽기</a>
+                        </div>
+                    `;
+                });
+                feedContainer.innerHTML = html;
+            } else {
+                feedContainer.innerHTML = '<p style="text-align:center;">작성된 노트가 없습니다.</p>';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('note-feed').innerHTML = '<p style="text-align:center; color:red;">피드를 불러오지 못했습니다.</p>';
+        });
+</script>
+
+</body>
+</html>
